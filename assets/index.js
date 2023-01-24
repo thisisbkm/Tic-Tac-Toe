@@ -47,33 +47,29 @@ function reset(){
 }
 
 function checkIt(i, j, key){
+    let player = (key === 1)?"X":"O";
+    let timeOutAlert = ()=>{
+        setTimeout(()=>{
+            alert("Player "+ player+" Won");
+            reset();
+        },100)}
     // let item = gridMap[0][0];
     // column constant
-    let player = (key === 1)?"X":"O";
     for(let row = 0;row<3;row++){
         if(key != gridMap[row][j]){
             break;
         }
         if(row === 2 && key === gridMap[row][j]){
-            setTimeout(()=>{
-                alert("Player "+ player+" Won");
-                reset();
-            }
-                ,100);
-            }
+            timeOutAlert();
         }
-
+    }
     for(let col = 0;col<3;col++){
         if(key != gridMap[i][col]){
             break;
         }
         if(col === 2 && key === gridMap[i][col]){
-            setTimeout(()=>{
-                alert("Player "+ player+" Won");
-                reset();
-            }
-                ,100);
-            }
+            timeOutAlert();
+        }
     }
     if(i === j){
         for(let col = 0;col<3;col++){
@@ -81,12 +77,8 @@ function checkIt(i, j, key){
                 break;
             }
             if(col === 2 && key === gridMap[col][col]){
-                setTimeout(()=>{
-                    alert("Player "+ player+" Won");
-                    reset();
-                }
-                    ,100);
-                }
+                timeOutAlert();
+            }
         }
     }
     if(i === 2 && j === 0 || i === 0 && j === 2){
@@ -96,12 +88,8 @@ function checkIt(i, j, key){
                 break;
             }
             if(col === 2 && key === gridMap[i][j]){
-                setTimeout(()=>{
-                    alert("Player "+ player+" Won");
-                    reset();
-                }
-                    ,100);
-                }
+                timeOutAlert();
+            }
             i--;j++;
         }
     }
